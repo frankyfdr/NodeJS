@@ -50,7 +50,9 @@ app.get("/logo/:sym", (req, res) => {
       res.send(data.data.quoteSummary);
     });
 });
+console.log("Server running on port: ", PORT);
 app.listen(PORT);
+
 /*
 https://query2.finance.yahoo.com/v10/finance/quoteSummary/AXP?formatted=true
 &crumb=gVOumV8ktPD&lang=en-US&region=US&modules=assetProfile%2CsecFilings&corsDomain=finance.yahoo.com
