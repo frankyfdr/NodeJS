@@ -4,7 +4,7 @@ const axios = require("axios");
 const cors = require("cors");
 const https = require("https");
 const fs = require("fs");
-var url = require("url");
+var PORT = process.env.PORT || 3001;
 
 //iniciando app
 const app = express();
@@ -50,17 +50,7 @@ app.get("/logo/:sym", (req, res) => {
       res.send(data.data.quoteSummary);
     });
 });
-https
-  .createServer(
-    {
-      key: fs.readFileSync("./key.pem"),
-      cert: fs.readFileSync("./cert.pem"),
-      passphrase: "frankyfdr",
-    },
-    app
-  )
-  .listen(3001);
-
+app.listen(PORT);
 /*
 https://query2.finance.yahoo.com/v10/finance/quoteSummary/AXP?formatted=true
 &crumb=gVOumV8ktPD&lang=en-US&region=US&modules=assetProfile%2CsecFilings&corsDomain=finance.yahoo.com
