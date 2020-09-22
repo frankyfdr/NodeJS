@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const axios = require("axios");
 const cors = require("cors");
-const http = require("http");
+const https = require("https");
 const fs = require("fs");
 var url = require("url");
 
@@ -50,8 +50,16 @@ app.get("/logo/:sym", (req, res) => {
       res.send(data.data.quoteSummary);
     });
 });
-
-app.listen(3001);
+https
+  .createServer(
+    {
+      key: fs.readFileSync("./key.pem"),
+      cert: fs.readFileSync("./cert.pem"),
+      passphrase: "frankyfdr",
+    },
+    app
+  )
+  .listen(3001);
 
 /*
 https://query2.finance.yahoo.com/v10/finance/quoteSummary/AXP?formatted=true
