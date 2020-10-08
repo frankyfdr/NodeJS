@@ -30,9 +30,9 @@ app.get("/info/:sym", (req, res) => {
 app.get("/lookup/:sym", (req, res) => {
   axios
     .get(
-      "https://query2.finance.yahoo.com/v1/finance/lookup?formatted=true&lang=en-US&region=US&query=" +
+      "https://query2.finance.yahoo.com/v1/finance/lookup?formatted=true&lang=en-US&query=" +
         req.params.sym +
-        "&type=all&count=5&start=0"
+        "&type=all&count=125&start=0"
     )
     .then((data) => {
       res.send(data.data);
