@@ -12,8 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const db = require("./db");
-app.use("/api", require("./src/routes.js"));
+//const db = require("./src/db");
 //iniciando dB
 // mongoose.connect("mongodb://user@password:27017/stockapi")
 /*mongoose.connect("mongodb://localhost:27017/stockapi", {

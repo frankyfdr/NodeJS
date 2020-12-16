@@ -8,6 +8,6 @@ mongoose.connect("mongodb://localhost:27017/stonks",
 { useNewUrlParser: true, useUnifiedTopology: true }
  );
 console.log("Stonks on");
- requireDir('./src/models');
+ requireDir('./models');
 
  
