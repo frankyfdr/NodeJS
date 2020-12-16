@@ -1,0 +1,13 @@
+GRAFS
+
+
+https://query1.finance.yahoo.com/v8/finance/chart/AXP?symbol=AXP&period1=1602172140&period2=1602532800&interval=1m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-US&region=US&crumb=gVOumV8ktPD&corsDomain=finance.yahoo.com
+
+
+holders
+https://query1.finance.yahoo.com/v10/finance/quoteSummary/TSLA?formatted=true&crumb=LQULKL1aEmg&lang=en-US&region=US&modules=institutionOwnership%2CfundOwnership%2CmajorDirectHolders%2CmajorHoldersBreakdown%2CinsiderTransactions%2CinsiderHolders%2CnetSharePurchaseActivity&corsDomain=finance.yahoo.com
+
+
+financial
+https://query1.finance.yahoo.com/v10/finance/quoteSummary/AXP?formatted=true&crumb=c4pW%2Ff2oJdf&lang=pt-BR&region=BR&modules=incomeStatementHistory%2CcashflowStatementHistory%2CbalanceSheetHistory%2CincomeStatementHistoryQuarterly%2CcashflowStatementHistoryQuarterly%2CbalanceSheetHistoryQuarterly%2Cearnings&corsDomain=br.financas.yahoo.com
+
