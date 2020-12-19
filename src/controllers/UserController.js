@@ -29,7 +29,7 @@ module.exports ={
     async store(req,res) {
        
         const user = await User.create(req.body);
-        console.log("New user: "+user.name);
+        console.log("New user");
         return res.json(user);
     }, 
 
