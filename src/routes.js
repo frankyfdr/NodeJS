@@ -5,7 +5,7 @@ const UserController = require('./controllers/UserController');
 const SymController = require('./controllers/SymController');
 
 routes.get("/users", UserController.index);
-routes.post("/users", UserController.store);
+routes.post("/signup", UserController.store);
 routes.post("/login", UserController.login);
 routes.put("/update", UserController.update);
 
