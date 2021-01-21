@@ -6,13 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "deploy": "scp -i ~/Documents/ocean -r ~/Projects/stock-api/src/*  root@178.62.43.97:~/NodeJS/src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.20.0",
+    "bcrypt": "^5.0.0",
     "chart.js": "^2.9.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
