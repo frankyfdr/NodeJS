@@ -12,6 +12,7 @@ routes.post("/users", UserController.index);
 routes.post("/signup", UserController.store);
 routes.post("/login", UserController.login);
 routes.put("/update", UserController.update);
+routes.post("/auth", UserController.auth);
 
 
 

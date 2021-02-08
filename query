@@ -8,7 +8,103 @@ https://query2.finance.yahoo.com/v10/finance/quoteSummary/nflx?formatted=true&cr
 modules=
 defaultKeyStatistics%2
 CfinancialData%2
-CcalendarEvents";
+CcalendarEvents
 
 https://query1.finance.yahoo.com/v8/finance/chart/TSLA?region=US&lang=en-US&includePrePost=false&interval=1mo&range=max
 
+https://query1.finance.yahoo.com/v10/finance/quoteSummary/nflx
+  ?&modules=
+  price%2C
+  summaryDetail%2C
+  pageViews%2C
+  financialsTemplate%2C
+  defaultKeyStatistics%2C
+  financialData%2C
+  calendarEvents%2C
+  calendarEventsformatted=true&crumb=c4pW%2Ff2oJdf&lang=pt-BR&region=BR"
+
+  https://query2.finance.yahoo.com/ws/fundamentals-timeseries/v1/finance/timeseries/NFLX?lang=en-GB&region=GB&symbol=NFLX&padTimeSeries=true&type=
+  annualEbitda%2CtrailingEbitda%2CannualDilutedAverageShares%2C
+  trailingDilutedAverageShares%2C
+  annualBasicAverageShares%2C
+  trailingBasicAverageShares%2CannualDilutedEPS%2CtrailingDilutedEPS%2C
+  annualBasicEPS%2CtrailingBasicEPS%2C
+  annualNetIncomeCommonStockholders%2C
+  trailingNetIncomeCommonStockholders%2C
+  annualNetIncome%2CtrailingNetIncome%2C
+  annualNetIncomeContinuousOperations%2C
+  trailingNetIncomeContinuousOperations%2C
+  annualTaxProvision%2CtrailingTaxProvision%2C
+  annualPretaxIncome%2CtrailingPretaxIncome%2C
+  annualOtherIncomeExpense%2C
+  trailingOtherIncomeExpense%2C
+  annualInterestExpense%2C
+  trailingInterestExpense%2CannualOperatingIncome%2C
+  trailingOperatingIncome%2CannualOperatingExpense%2C
+  trailingOperatingExpense%2CannualSellingGeneralAndAdministration%2C
+  trailingSellingGeneralAndAdministration%2C
+  annualResearchAndDevelopment%2C
+  trailingResearchAndDevelopment%2CannualGrossProfit%2C
+  trailingGrossProfit%2C
+  annualCostOfRevenue%2C
+  trailingCostOfRevenue%2C
+  annualTotalRevenue%2C
+  trailingTotalRevenue
+  &merge=false&period1=493590046&period2=1612019540&corsDomain=uk.finance.yahoo.com
+
+
+  https://query2.finance.yahoo.com/ws/fundamentals-timeseries/v1/finance/timeseries/NFLX?lang=en-GB&region=GB&symbol=NFLX&padTimeSeries=true&type=annualTotalAssets%2CtrailingTotalAssets%2CannualStockholdersEquity%2C
+  trailingStockholdersEquity%2C
+  annualGainsLossesNotAffectingRetainedEarnings%2C
+  trailingGainsLossesNotAffectingRetainedEarnings%2CannualRetainedEarnings%2C
+  trailingRetainedEarnings%2C
+  annualCapitalStock%2C
+  trailingCapitalStock%2C
+  annualTotalLiabilitiesNetMinorityInterest%2C
+  trailingTotalLiabilitiesNetMinorityInterest%2C
+  annualTotalNonCurrentLiabilitiesNetMinorityInterest%2C
+  trailingTotalNonCurrentLiabilitiesNetMinorityInterest%2C
+  annualOtherNonCurrentLiabilities%2C
+  trailingOtherNonCurrentLiabilities%2C
+  annualNonCurrentDeferredRevenue%2C
+  trailingNonCurrentDeferredRevenue%2C
+  annualNonCurrentDeferredTaxesLiabilities%2CtrailingNonCurrentDeferredTaxesLiabilities%2C
+  annualLongTermDebt%2CtrailingLongTermDebt%2C
+  annualCurrentLiabilities%2CtrailingCurrentLiabilities%2C
+  annualOtherCurrentLiabilities%2C
+  trailingOtherCurrentLiabilities%2C
+  annualCurrentDeferredRevenue%2C
+  trailingCurrentDeferredRevenue%2C
+  annualCurrentAccruedExpenses%2C
+  trailingCurrentAccruedExpenses%2C
+  annualIncomeTaxPayable%2CtrailingIncomeTaxPayable%2C
+  annualAccountsPayable%2CtrailingAccountsPayable%2C
+  annualCurrentDebt%2CtrailingCurrentDebt%2C
+  annualTotalNonCurrentAssets%2C
+  trailingTotalNonCurrentAssets%2C
+  annualOtherNonCurrentAssets%2C
+  trailingOtherNonCurrentAssets%2C
+  annualOtherIntangibleAssets%2C
+  trailingOtherIntangibleAssets%2C
+  annualGoodwill%2CtrailingGoodwill%2C
+  annualInvestmentsAndAdvances%2C
+  trailingInvestmentsAndAdvances%2CannualNetPPE%2C
+  trailingNetPPE%2CannualAccumulatedDepreciation%2C
+  trailingAccumulatedDepreciation%2CannualGrossPPE%2C
+  trailingGrossPPE%2C
+  annualCurrentAssets%2C
+  trailingCurrentAssets%2CannualOtherCurrentAssets%2C
+  trailingOtherCurrentAssets%2C
+  annualInventory%2CtrailingInventory%2C
+  annualAccountsReceivable%2C
+  trailingAccountsReceivable%2C
+  annualCashCashEquivalentsAndShortTermInvestments%2C
+  trailingCashCashEquivalentsAndShortTermInvestments%2C
+  annualOtherShortTermInvestments%2C
+  trailingOtherShortTermInvestments%2C
+  annualCashAndCashEquivalents%2C
+  trailingCashAndCashEquivalents
+  &merge=false&period1=493590046&period2=1612023586&corsDomain=uk.finance.yahoo.com
+
+
+  axios.get("https://query1.finance.yahoo.com/ws/fundamentals-timeseries/v1/finance/timeseries/"+req.params.sym+"?lang=en-GB&region=GB&symbol="+req.body.sym+"&padTimeSeries=true&type=annualTotalLiabilitiesNetMinorityInterest%2CannualCostOfRevenue%2CtrailingCostOfRevenue%2CtrailingCapitalExpenditure%2CannualOperatingCashFlow%2CtrailingOperatingCashFlow%2CannualEndCashPosition%2CtrailingEndCashPosition%2CannualBeginningCashPosition%2CtrailingBeginningCashPosition%2CannualChangeInCashSupplementalAsReported%2CtrailingChangeInCashSupplementalAsReported%2CannualCashFlowFromContinuingFinancingActivities%2CtrailingCashFlowFromContinuingFinancingActivities%2CannualNetOtherFinancingCharges%2CtrailingNetOtherFinancingCharges%2CannualCashDividendsPaid%2CtrailingCashDividendsPaid%2CannualRepurchaseOfCapitalStock%2CtrailingRepurchaseOfCapitalStock%2CannualCommonStockIssuance%2CtrailingCommonStockIssuance%2CannualRepaymentOfDebt%2CtrailingRepaymentOfDebt%2CannualInvestingCashFlow%2CtrailingInvestingCashFlow%2CannualNetOtherInvestingChanges%2CtrailingNetOtherInvestingChanges%2CannualSaleOfInvestment%2CtrailingSaleOfInvestment%2CannualPurchaseOfInvestment%2CtrailingPurchaseOfInvestment%2CannualPurchaseOfBusiness%2CtrailingPurchaseOfBusiness%2CannualOtherNonCashItems%2CtrailingOtherNonCashItems%2CannualChangeInAccountPayable%2CtrailingChangeInAccountPayable%2CannualChangeInInventory%2CtrailingChangeInInventory%2CannualChangesInAccountReceivables%2CtrailingChangesInAccountReceivables%2CannualChangeInWorkingCapital%2CannualNetIncome%2CannualEbitda%2CtrailingEbitda%2CtrailingNetIncome&merge=false&period1=493590046&period2=1612014480")
