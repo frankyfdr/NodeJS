@@ -41,26 +41,31 @@ app.all('/client', function (req, res) {
 })
 
 
-
+// request for live price of stock
 app.get("/info/:sym", (req, res) => {
   axios
     .get(
+      // API URL 
       "https://query1.finance.yahoo.com/v7/finance/quote?symbols=" +
         req.params.sym
     )
     .then((data) => {
+      // Sending the data to Frond-end app
       res.send(data.data);
     });
 });
+
+// request for keyword stock search
 app.get("/lookup/:sym", (req, res) => {
   axios
     .get(
+      // API URL 
       "https://query2.finance.yahoo.com/v1/finance/lookup?formatted=true&lang=en-US&query=" +
         req.params.sym +
         "&type=all&count=5&start=0"
     )
     .then((data) => {
-      res.send(data.data);
+      res.send(data.data); // Sending the data to Frond-end app
     });
 });
 
@@ -125,19 +130,29 @@ try{
     let totalCostRevenue = "N/A"
     if(financial.trailingCostOfRevenue)
     totalCostRevenue = financial.trailingCostOfRevenue[0].reportedValue.raw
-
-    
-    let totalCash = sumary.financialData.totalCash.raw
-    let totalRevenue = sumary.financialData.totalRevenue.raw
-    let netIncome = sumary.defaultKeyStatistics.netIncomeToCommon.raw
-    let name = sumary.price.shortName;
-    let price = sumary.price.regularMarketPrice.fmt;
-    let change = sumary.price.regularMarketChangePercent.fmt;
-    let EPS = sumary.defaultKeyStatistics.trailingEps.fmt;
-    let QuickRatio = sumary.financialData.quickRatio.fmt // two
-    let Debt_Equity  = sumary.financialData.debtToEquity.fmt;
-    let ROE = sumary.financialData.returnOnEquity.fmt;  //one
-    let ROA = sumary.financialData.returnOnAssets.fmt
+	
+	
+	let dividendYield = sumary.summaryDetail.dividendYield.fmt
+	if(dividendYield =="")
+	dividendYield = "N/A"
+	
+	let forwardPE = sumary.summaryDetail.forwardPE.fmt
+	let trailingPE = sumary.summaryDetail.trailingPE.fmt
+	let ProfitMargin = sumary.financialData.profitMargins.fmt
+	let debtToEquity = sumary.financialData.debtToEquity.fmt
+	let operatingMargins = sumary.financialData.operatingMargins.fmt
+	let peg = sumary.defaultKeyStatistics.pegRatio.raw
+	let totalCash = sumary.financialData.totalCash.raw
+	let totalRevenue = sumary.financialData.totalRevenue.raw
+	let netIncome = sumary.defaultKeyStatistics.netIncomeToCommon.raw
+	let name = sumary.price.shortName;
+	let price = sumary.price.regularMarketPrice.fmt;
+	let change = sumary.price.regularMarketChangePercent.fmt;
+	let EPS = sumary.defaultKeyStatistics.trailingEps.fmt;
+	let QuickRatio = sumary.financialData.quickRatio.fmt // two
+	let Debt_Equity  = sumary.financialData.debtToEquity.fmt;
+	let ROE = sumary.financialData.returnOnEquity.fmt;  //one
+	let ROA = sumary.financialData.returnOnAssets.fmt
 
     let InvestCapital ="N/A"
     if(financial.trailingInvestingCashFlow)
@@ -154,13 +169,14 @@ try{
     let NetDebt = (totalLibialities-totalCash)
     let DL_P = (NetDebt/bookValue).toFixed(0)
     let DL_E = (NetDebt/ebitda)
-    let currentRatio = sumary.financialData.currentRatio.fmt+("(mrq)")
+    let currentRatio = sumary.financialData.currentRatio.fmt
     let DIVB_E = (totalLibialities/ebitda)
   
     
   
     let data = 
     {
+	
       Name: name,
       Price: price,
       Change: change,
@@ -176,7 +192,14 @@ try{
       currentRatio:currentRatio,
       DIVB_E:DIVB_E,
       ebitdaCAGR:ebitdaCAGR,
-      netIncomeCAGR:netIncomeCAGR
+      netIncomeCAGR:netIncomeCAGR,
+      PEG:peg,
+      ProfitMargin:ProfitMargin,
+     debtToEquity:debtToEquity,
+     operatingMargins:operatingMargins,
+     forwardPE:forwardPE,
+     trailingPE:trailingPE,
+     dividendYield:dividendYield,
      }
     res.json(data)
     //res.json([cash,sumary])
@@ -191,9 +214,9 @@ try{
 
   });
 
-app.get("/graf", (req, res) => {  
-
+app.get("/graf/:sym/:p1/:p2", (req, res) => {  
 /*
+
   let unix_timestamp = 1602499800;
 // Create a new JavaScript Date object based on the timestamp
 // multiplied by 1000 so that the argument is in milliseconds, not seconds.
@@ -212,19 +235,22 @@ var ano = date.getFullYear();
 var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 2
 console.log(dia+"/"+mes+"/"+ano);
-
-  
-
+*/
+//res.send([req.params.sym,req.params.p1,req.params.p2])
   axios
     .get(
-      "https://query1.finance.yahoo.com/v8/finance/chart/AXP?symbol=AXP&period1=1602172140&period2=1602532800&interval=1m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-US&region=US&crumb=gVOumV8ktPD&corsDomain=finance.yahoo.com"
+      //"https://query1.finance.yahoo.com/v8/finance/chart/"+req.params.sym+"?symbol="+req.params.sym
+      "https://query1.finance.yahoo.com/v8/finance/chart/"+req.params.sym+"?symbol="+req.params.sym+"&period1="+req.params.p1.substring(0,req.params.p1.length - 3)+"&period2="+req.params.p2.substring(0,req.params.p2.length - 3)+"&interval=30m&includePrePost=true&events=div%7Csplit%7Cearn"
     )
     .then((data) => {
-      res.send(data.data);
+      data = data.data.chart.result[0]
+      var x = [...data.timestamp];
+      var y = [...data.indicators.quote[0].close]
+      res.send([x,y]);
     });
     
 
-*/
+
 
 
     })
